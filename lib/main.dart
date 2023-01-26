@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebaseapp/login.dart';
+import 'package:firebaseapp/pages/login.dart';
 import 'package:flutter/material.dart';
 
 import 'firebase_options.dart';
@@ -10,7 +10,7 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  FirebaseAuth.instance.useAuthEmulator('localhost', 9099);
+  // FirebaseAuth.instance.useAuthEmulator('localhost', 9099);
   runApp(const MyApp());
 }
 

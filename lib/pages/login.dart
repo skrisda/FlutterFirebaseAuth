@@ -1,5 +1,8 @@
-import 'package:firebaseapp/register.dart';
+import 'package:firebaseapp/pages/home.dart';
+import 'package:firebaseapp/pages/register.dart';
 import 'package:flutter/material.dart';
+
+import '../services/auth_service.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -50,7 +53,18 @@ class _LoginPageState extends State<LoginPage> {
                   ElevatedButton(
                     onPressed: () {
                       if (_formkey.currentState!.validate()) {
-                        print('OK');
+                        AuthService.loginUser(
+                                _emailController.text, _passwordController.text)
+                            .then((value) => {
+                                  if (value == "success")
+                                    {
+                                      Navigator.pushReplacement(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const HomePage()))
+                                    }
+                                });
                       }
                     },
                     child: const Text('Login'),
